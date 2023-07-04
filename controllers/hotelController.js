@@ -1,18 +1,18 @@
 import hotelModel from "../models/hotelModel.js";
 
 // CREATE
-export const createHotel = async (req, res) => {
+export const createHotel = async (req, res, next) => {
   const newHotel = new hotelModel(req.body);
   try {
     const savedHotel = await newHotel.save();
     res.status(200).json(savedHotel);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    next(err);
   }
 };
 
 // UPDATE
-export const updateHotel = async (req, res) => {
+export const updateHotel = async (req, res, next) => {
   const { id } = req.params;
   try {
     const updatedHotel = await hotelModel.findByIdAndUpdate(
@@ -23,39 +23,39 @@ export const updateHotel = async (req, res) => {
       { new: true }
     );
     res.status(200).json(updatedHotel);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    next(err);
   }
 };
 
 // DELETE
-export const deleteHotel = async (req, res) => {
+export const deleteHotel = async (req, res, next) => {
   const { id } = req.params;
   try {
     await hotelModel.findByIdAndDelete(id);
     res.status(200).json("Hotel has been deleted");
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    next(err);
   }
 };
 
 // GET ONE
-export const getOneHotel = async (req, res) => {
+export const getOneHotel = async (req, res, next) => {
   const { id } = req.params;
   try {
     const hotel = await hotelModel.findById(id);
     res.status(200).json(hotel);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    next(err);
   }
 };
 
 // GET ALL
-export const getHotels = async (req, res) => {
+export const getHotels = async (req, res, next) => {
   try {
     const hotels = await hotelModel.find();
     res.status(200).json(hotels);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    next(err);
   }
 };
