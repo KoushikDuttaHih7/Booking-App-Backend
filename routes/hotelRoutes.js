@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import {
   countByCity,
+  countByType,
   createHotel,
   deleteHotel,
   getHotels,
@@ -21,6 +22,6 @@ router.get("/find/:id", getOneHotel);
 // GET ALL
 router.get("/", getHotels);
 router.get("/countByCity", countByCity);
-router.get("/countByType", getHotels);
+router.get("/countByType", countByType);
 
 export default router;
