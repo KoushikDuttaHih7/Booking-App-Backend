@@ -1,8 +1,19 @@
 import express from "express";
+import {
+  deleteUser,
+  getOneUser,
+  getUsers,
+  updateUser,
+} from "../controllers/userController.js";
 const router = express.Router();
 
-router.get('/',(req,res)=>{
-    res.send('Hello, this is auth endpoint')
-})
+// UPDATE
+router.put("/:id", updateUser);
+// DELETE
+router.delete("/:id", deleteUser);
+// GET ONE
+router.get("/:id", getOneUser);
+// GET ALL
+router.get("/", getUsers);
 
-export default router
+export default router;
