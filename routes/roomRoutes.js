@@ -11,12 +11,12 @@ import {
 import { verifyAdmin } from "../utils/verifyToken.js";
 
 // CREATE
-router.post("/:hotelid", verifyAdmin, createRoom);
+router.post("/:hotelid", createRoom);
 // UPDATE
-router.put("/:id", verifyAdmin, updateRoom);
+router.put("/:id", updateRoom);
 router.put("/availability/:id", updateRoomAvailablility);
 // DELETE
-router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
+router.delete("/:id/:hotelid", deleteRoom);
 // GET ONE
 router.get("/:id", getOneRoom);
 // GET ALL

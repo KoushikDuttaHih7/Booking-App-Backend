@@ -9,12 +9,12 @@ import {
 import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
 
 // UPDATE
-router.put("/:id", verifyUser, updateUser);
+router.put("/:id", updateUser);
 // DELETE
-router.delete("/:id", verifyUser, deleteUser);
+router.delete("/:id", deleteUser);
 // GET ONE
-router.get("/:id", verifyUser, getOneUser);
+router.get("/find/:id", getOneUser);
 // GET ALL
-router.get("/", verifyAdmin, getUsers);
+router.get("/", getUsers);
 
 export default router;
